@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from: 'constants.gradle'
+apply plugin: 'maven-publish'
+
+android {
+    namespace "$mavenGroup"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "$mavenVersion"
+        consumerProguardFiles 'proguard-rules.txt'
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    libraryVariants.all {
+        it.generateBuildConfigProvider.configure { enabled = false }
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = "$mavenGroup"
+                artifactId = "$mavenArtifactId"
+                version = "$mavenVersion"
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = "$projectName"
+                    description = "$projectDesc"
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution = 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            name = 'QuickVerse'
+                        }
+                    }
+                    scm {
+                        connection = "${githubUrl}.git"
+                        url = githubUrl
+                    }
+                }
+            }
+        }
+    }
+}
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}

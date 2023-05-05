@@ -1,0 +1,10 @@
+ext {
+    projectName = 'quickverse-android-sdk'
+    projectDesc = 'QuickVerse Android SDK'
+
+    githubUrl = 'https://github.com/QuickVerse/quickverse-android-sdk'
+
+    mavenGroup = 'com.quickverse.android.sdk'
+    mavenArtifactId = 'quickverse'
+    mavenVersion = '1.3.0'
+}

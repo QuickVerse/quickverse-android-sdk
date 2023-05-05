@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context=".FirstFragment">
+
+    <TextView
+        android:id="@+id/result_source_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#7F7F7F"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/system_language_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cycle_demo_languages_button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text="Cycle demo languages"
+        android:textAllCaps="true"
+        android:textSize="14dp"
+        app:backgroundTint="@color/qv_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/system_language_button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text="Use system language"
+        android:textAllCaps="true"
+        android:textSize="14dp"
+        app:backgroundTint="@color/qv_purple"
+        app:layout_constraintBottom_toTopOf="@+id/cycle_demo_languages_button"
+        app:layout_constraintEnd_toStartOf="@+id/change_system_language_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/change_system_language_button"
+        android:layout_width="102dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text="Change"
+        android:textAllCaps="true"
+        android:textColor="@color/qv_purple"
+        android:textSize="14dp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cycle_demo_languages_button"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/onboarding_title_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#36454f"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="Onboarding Demo Welcome" />
+
+    <TextView
+        android:id="@+id/onboarding_body_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/lexend_regular"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#7F7F7F"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_title_textview"
+        tools:text="Onboarding Demo Body" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

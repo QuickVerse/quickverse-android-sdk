@@ -31,6 +31,15 @@ android {
     libraryVariants.all {
         it.generateBuildConfigProvider.configure { enabled = false }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget=11
+    }
 }
 
 dependencies {
@@ -55,8 +64,8 @@ afterEvaluate {
                     description = "$projectDesc"
                     licenses {
                         license {
-                            name = 'The Apache Software License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            name = 'Commercial'
+                            url = 'https://github.com/QuickVerse/quickverse-android-sdk/blob/main/README.md'
                             distribution = 'repo'
                         }
                     }

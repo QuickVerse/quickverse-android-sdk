@@ -65,7 +65,7 @@ afterEvaluate {
                     licenses {
                         license {
                             name = 'Commercial'
-                            url = 'https://github.com/QuickVerse/quickverse-android-sdk/blob/main/README.md'
+                            url = 'https://github.com/QuickVerse/quickverse-android-sdk/blob/main/License.md'
                             distribution = 'repo'
                         }
                     }

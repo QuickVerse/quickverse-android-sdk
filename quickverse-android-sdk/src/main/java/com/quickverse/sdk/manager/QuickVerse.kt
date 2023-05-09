@@ -93,10 +93,10 @@ object QuickVerse {
      */
     private fun getLocalizationsFor(languageCode: String, completion: (Boolean) -> Unit) {
         if (apiKey.isEmpty()) {
-            throw Exception("🚨 API Key not provided. Please configure the SDK on your app startup (usually AppDelegate) with your API key from https://quickverse.io.")
+            throw Exception("🚨 API Key not provided. Please configure the SDK on your app startup with your API key from https://quickverse.io.")
         }
         if (packageName.isEmpty()) {
-            throw Exception("🚨 Package name not provided. Please configure the SDK on your app startup (usually AppDelegate) with your API key from https://quickverse.io.")
+            throw Exception("🚨 Package name not provided. Please configure the SDK on your app startup with your API key from https://quickverse.io.")
         }
         val base64Token = Base64.getEncoder().encodeToString("$packageName:$apiKey".toByteArray())
         val token64 = "Bearer $base64Token"
@@ -121,10 +121,12 @@ object QuickVerse {
                     }
                     completion(true)
                 } else {
+                    QuickVerseLogger.logStatement("ℹ️ Localization fetch unsuccessful")
                     completion(false)
                 }
             }
             override fun onFailure(call: Call<QuickVerseResponse>, t: Throwable) {
+                QuickVerseLogger.logStatement("ℹ️ Localization fetch unsuccessful")
                 completion(false)
             }
         })

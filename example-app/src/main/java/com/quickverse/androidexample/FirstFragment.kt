@@ -35,7 +35,7 @@ class FirstFragment : Fragment() {
          *      The package name of this demo app (if you don't change it) is: com.quickverse.androidexample.
          * 2. Update the "configure" call below with your quickverse API Key.
          */
-        QuickVerse.configure(quickVerseAPIKey = "p_qv_wE3PBFmlOOreMdsAsS87PTt7coIvIb9M", appPackageName = "com.quickverse.android-example")
+        QuickVerse.configure(quickVerseAPIKey = "", appPackageName = "com.quickverse.android-example")
         QuickVerse.isDebugModeEnabled = true
         getDeviceLanguageLocalizations()
 

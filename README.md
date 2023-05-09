@@ -17,7 +17,7 @@ Add the following dependency to your module-level `build.gradle` file:
 
 ```
 dependencies {
-    implementation 'com.quickverse.androidsdk:1.3.2'
+    implementation 'io.quickverse.androidsdk:quickverse:1.3.2'
 }
 ```
 

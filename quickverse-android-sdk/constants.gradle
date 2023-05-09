@@ -2,9 +2,9 @@ ext {
     projectName = 'quickverse-android-sdk'
     projectDesc = 'QuickVerse Android SDK'
 
-    githubUrl = 'https://github.com/QuickVerse/quickverse-android-sdk'
+    githubURL = "scm:git://github.com/QuickVerse/quickverse-android-sdk.git"
 
-    mavenGroup = 'com.quickverse.android.sdk'
+    mavenGroupId = 'io.quickverse.androidsdk'
     mavenArtifactId = 'quickverse'
-    mavenVersion = '1.3.0'
+    mavenVersion = '1.3.2'
 }

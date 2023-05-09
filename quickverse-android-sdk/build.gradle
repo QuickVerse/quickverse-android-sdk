@@ -2,9 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply from: 'constants.gradle'
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 android {
-    namespace "$mavenGroup"
+    namespace "$mavenGroupId"
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -18,7 +19,6 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
-            withJavadocJar()
         }
     }
 
@@ -53,15 +53,16 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = "$mavenGroup"
+                groupId = "$mavenGroupId"
                 artifactId = "$mavenArtifactId"
                 version = "$mavenVersion"
 
-                artifact androidSourcesJar
+                //artifact androidSourcesJar
 
                 pom {
                     name = "$projectName"
                     description = "$projectDesc"
+                    url = "https://quickverse.io"
                     licenses {
                         license {
                             name = 'Commercial'
@@ -75,13 +76,28 @@ afterEvaluate {
                         }
                     }
                     scm {
-                        connection = "${githubUrl}.git"
-                        url = githubUrl
+                        connection = "$githubURL"
+                        developerConnection = "$githubURL"
+                        url = 'https://github.com/QuickVerse/quickverse-android-sdk'
                     }
                 }
             }
         }
+        repositories {
+            maven {
+                name = "OSSRH"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username = mavenCentralUsername
+                    password = mavenCentralPassword
+                }
+            }
+        }
     }
+}
+
+signing {
+    sign publishing.publications
 }
 
 task androidSourcesJar(type: Jar) {

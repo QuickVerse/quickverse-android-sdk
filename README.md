@@ -17,7 +17,7 @@ Add the following dependency to your module-level `build.gradle` file:
 
 ```
 dependencies {
-    implementation 'io.quickverse.androidsdk:quickverse:1.3.2'
+    implementation 'io.quickverse.androidsdk:quickverse:1.3.3'
 }
 ```
 
@@ -27,7 +27,7 @@ QuickVerse is a very lightweight integration, requiring just a few lines of code
 
 1. In files where you wish to use QuickVerse localizations, import the QuickVerse SDK you just installed.
 ```Kotlin
-import com.quickverse.android_sdk.manager.QuickVerse
+import com.quickverse.sdk.manager.QuickVerse
 ```
 2. Configure the QuickVerse SDK on launch. To do this, you need your APIKey, retrievable from your QuickVerse account [here](https://quickverse.io/project/default/applications).
 ```Kotlin

@@ -1,4 +1,4 @@
-package com.quickverse.android_sdk.logging
+package com.quickverse.sdk.logging
 
 object QuickVerseLogger {
     fun logStatement(string: String) {

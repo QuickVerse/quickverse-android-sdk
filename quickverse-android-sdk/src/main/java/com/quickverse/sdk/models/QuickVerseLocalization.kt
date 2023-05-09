@@ -1,4 +1,4 @@
-package com.quickverse.android_sdk.models
+package com.quickverse.sdk.models
 
 import java.io.Serializable
 

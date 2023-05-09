@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.quickverse.androidexample'
-    compileSdk 33
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.quickverse.androidexample"
-        minSdk 26
-        targetSdk 33
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
     }
@@ -24,6 +24,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
     buildFeatures {
         viewBinding true

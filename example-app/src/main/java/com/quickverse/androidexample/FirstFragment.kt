@@ -36,7 +36,7 @@ class FirstFragment : Fragment() {
          * 2. Update the "configure" call below with your quickverse API Key.
          */
         QuickVerse.configure(quickVerseAPIKey = "", appPackageName = "com.quickverse.androidexample")
-        QuickVerse.isDebugModeEnabled = true
+        QuickVerse.isDebugEnabled = true
         getDeviceLanguageLocalizations()
 
         return binding.root

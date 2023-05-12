@@ -15,7 +15,7 @@ interface QuickVerseAPI {
     @Headers(
         "Content-Type: application/json",
         "Platform: Android",
-        "X_QUICKVERSE_VERSION: 1.0.0"
+        "X_QUICKVERSE_VERSION: 1.3.4"
     )
     @GET("localisation/{languageCode}")
     fun getLocalizations(
@@ -26,7 +26,7 @@ interface QuickVerseAPI {
 
 /**
  * 1. Configure this object with both an API Key and your app's package name.
- * 2. Optionally set `isDebugModeEnabled` to true for detailed console logs.
+ * 2. Optionally set `isDebugEnabled` to true for detailed console logs.
  * 3. Call `getLocalizations(` at a time that works for your app. In most cases you'd want to do this during your launch sequence, before any copy is displayed.
  * 4. Call `stringFor(` to retrieve the localized string for the user's device language setting
  * 5. This object will hold the localized values for the duration of the session, and can be retrieved from anywhere in your app.
@@ -46,7 +46,7 @@ object QuickVerse {
     }
 
     private var localizations = emptyList<QuickVerseLocalization>()
-    var isDebugModeEnabled: Boolean = false
+    var isDebugEnabled: Boolean = false
 
     private var apiKey = String()
     private var packageName = String()
@@ -100,14 +100,14 @@ object QuickVerse {
         }
         val base64Token = Base64.getEncoder().encodeToString("$packageName:$apiKey".toByteArray())
         val token64 = "Bearer $base64Token"
-        if (isDebugModeEnabled) {
+        if (isDebugEnabled) {
             QuickVerseLogger.logStatement("ℹ️ Retrieving localizations for language code: $languageCode")
         }
         service.getLocalizations(tokenString = token64, languageCode = languageCode).enqueue(object : Callback<QuickVerseResponse> {
             override fun onResponse(call: Call<QuickVerseResponse>, response: Response<QuickVerseResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.data?.localisations?.let { unwrappedLocalizations ->
-                        if (isDebugModeEnabled) {
+                        if (isDebugEnabled) {
                             if (unwrappedLocalizations.isEmpty()) {
                                 QuickVerseLogger.logStatement("🚨 WARN: Localizations empty. Please add at least one localization entry to your account on quickverse.io.")
                             } else {
@@ -116,7 +116,7 @@ object QuickVerse {
                         }
                         localizations = unwrappedLocalizations
                     }
-                    if (localizations.isEmpty() && isDebugModeEnabled) {
+                    if (localizations.isEmpty() && isDebugEnabled) {
                         QuickVerseLogger.logStatement("🚨 WARN: Localizations empty. Please add at least one localization entry to your account on quickverse.io.")
                     }
                     completion(true)

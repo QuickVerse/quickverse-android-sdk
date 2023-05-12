@@ -1,8 +1,8 @@
-package com.quickverse.sdk.manager
+package com.quickverse.androidsdk.manager
 
-import com.quickverse.sdk.logging.QuickVerseLogger
-import com.quickverse.sdk.models.QuickVerseLocalization
-import com.quickverse.sdk.models.QuickVerseResponse
+import com.quickverse.androidsdk.logging.QuickVerseLogger
+import com.quickverse.androidsdk.models.QuickVerseLocalization
+import com.quickverse.androidsdk.models.QuickVerseResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

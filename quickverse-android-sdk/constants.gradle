@@ -1,6 +1,6 @@
 ext {
     projectName = 'quickverse-android-sdk'
-    projectDesc = 'QuickVerse Android SDK'
+    projectDesc = 'QuickVerse makes mobile & web app localization a breeze. Migrate your web and mobile localizations to QuickVerse Cloud, and start managing them anytime, anywhere, collaboratively.'
 
     githubURL = "scm:git://github.com/QuickVerse/quickverse-android-sdk.git"
 

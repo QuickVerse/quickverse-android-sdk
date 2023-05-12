@@ -32,7 +32,7 @@ QuickVerse is a very lightweight integration, requiring just a few lines of code
 ### 1. Import the SDK
 
 ```kotlin
-import com.quickverse.sdk.manager.QuickVerse
+import com.quickverse.androidsdk.manager.QuickVerse
 ```
 
 ### 2. Configure the SDK on app launch

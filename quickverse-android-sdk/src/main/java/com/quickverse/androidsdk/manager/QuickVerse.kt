@@ -15,7 +15,7 @@ interface QuickVerseAPI {
     @Headers(
         "Content-Type: application/json",
         "Platform: Android",
-        "X_QUICKVERSE_VERSION: 1.3.4"
+        "X_QUICKVERSE_VERSION: 1.5.1"
     )
     @GET("localisation/{languageCode}")
     fun getLocalizations(

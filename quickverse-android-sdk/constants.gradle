@@ -6,5 +6,5 @@ ext {
 
     mavenGroupId = 'io.quickverse.androidsdk'
     mavenArtifactId = 'quickverse'
-    mavenVersion = '1.3.4'
+    mavenVersion = '1.5.0'
 }

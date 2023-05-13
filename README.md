@@ -21,7 +21,7 @@ Add the following dependency to your _module-level_ `build.gradle` file:
 
 ```
 dependencies {
-    implementation 'io.quickverse.androidsdk:quickverse:1.3.4'
+    implementation 'io.quickverse.androidsdk:quickverse:1.5.0'
 }
 ```
 
@@ -67,14 +67,14 @@ text = QuickVerse.stringFor("Onboarding.Demo.Body", "Welcome to QuickVerse")
 
 **_Recommended_**: Although you _can_ access the keys "inline", as showed above, we strongly recommend you store your keys in a single file for easy maintenance, e.g:
 ```kotlin
-object QuickVerseKey {
+object QVKey {
     const val onboardingDemoTitle = "Onboarding.Demo.Title"
 }
 ```
 
 You can then access your localized strings without hardcoding keys:
 ```kotlin
-text = QuickVerse.stringFor(QuickVerseKey.onboardingDemoTitle)
+text = QuickVerse.stringFor(QVKey.onboardingDemoTitle)
 ```
 
 ## Logging & Troubleshooting

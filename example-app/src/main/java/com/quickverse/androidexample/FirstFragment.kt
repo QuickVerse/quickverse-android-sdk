@@ -11,8 +11,9 @@ import com.quickverse.androidsdk.manager.QuickVerse
 import com.quickverse.androidexample.databinding.FragmentFirstBinding
 import java.util.*
 
-object QuickVerseKey {
+object QVKey {
     const val onboardingDemoTitle = "Onboarding.Demo.Title"
+    const val onboardingDemoBody = "Onboarding.Demo.Body"
 }
 
 class FirstFragment : Fragment() {
@@ -63,9 +64,12 @@ class FirstFragment : Fragment() {
                 binding.resultSourceTextview.text = "Using: System Language (${Locale.getDefault().language})"
 
                 // Strongly Recommended - Use a centrally-declared keys file
-                binding.onboardingTitleTextview.text = QuickVerse.stringFor(QuickVerseKey.onboardingDemoTitle)
+                binding.onboardingTitleTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoTitle)
                 // Alternatively, keys can be hardcoded "inline"
                 binding.onboardingBodyTextview.text = QuickVerse.stringFor("Onboarding.Demo.Body")
+
+                // Optionally provide a default value
+                binding.onboardingBodyTextview.text = QuickVerse.stringFor(key = QVKey.onboardingDemoBody, defaultValue = "Welcome to QuickVerse")
             } else {
                 // Handle error
                 println("Error")
@@ -85,10 +89,8 @@ class FirstFragment : Fragment() {
             if (success) {
                 binding.resultSourceTextview.text = "Using: Demo Language ($demoLanguageCode)"
 
-                // Strongly Recommended - Use a centrally-declared keys file
-                binding.onboardingTitleTextview.text = QuickVerse.stringFor(QuickVerseKey.onboardingDemoTitle)
-                // Alternatively, keys can be hardcoded "inline"
-                binding.onboardingBodyTextview.text = QuickVerse.stringFor("Onboarding.Demo.Body")
+                binding.onboardingTitleTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoTitle)
+                binding.onboardingBodyTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoBody)
             } else {
                 // Handle error
             }

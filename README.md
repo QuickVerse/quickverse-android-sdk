@@ -21,7 +21,7 @@ Add the following dependency to your _module-level_ `build.gradle` file:
 
 ```
 dependencies {
-    implementation 'io.quickverse.androidsdk:quickverse:1.5.3'
+    implementation 'io.quickverse.androidsdk:quickverse:1.5.4'
 }
 ```
 
@@ -32,7 +32,7 @@ QuickVerse is a very lightweight integration, requiring just a few lines of code
 ### 1. Import the SDK
 
 ```kotlin
-import com.quickverse.androidsdk.manager.QuickVerse
+import com.quickverse.androidsdk.QuickVerse
 ```
 
 ### 2. Configure the SDK on app launch

@@ -1,13 +1,13 @@
-package com.quickverse.networking
+package com.quickverse.androidsdk.internal.networking
 
 import android.provider.Settings
-import com.quickverse.androidsdk.managers.LoggingManager
-import com.quickverse.androidsdk.managers.MissingKey
-import com.quickverse.androidsdk.managers.QuickVerse
-import com.quickverse.androidsdk.managers.ReportBody
-import com.quickverse.androidsdk.managers.UtilisedKey
-import com.quickverse.androidsdk.models.QuickVerseLocalization
-import com.quickverse.androidsdk.models.QuickVerseResponse
+import com.quickverse.androidsdk.internal.managers.LoggingManager
+import com.quickverse.androidsdk.internal.managers.MissingKey
+import com.quickverse.androidsdk.QuickVerse
+import com.quickverse.androidsdk.internal.managers.ReportBody
+import com.quickverse.androidsdk.internal.managers.UtilisedKey
+import com.quickverse.androidsdk.internal.models.QuickVerseLocalization
+import com.quickverse.androidsdk.internal.models.QuickVerseResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

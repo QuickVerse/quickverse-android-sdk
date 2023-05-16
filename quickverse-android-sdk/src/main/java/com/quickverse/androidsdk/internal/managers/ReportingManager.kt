@@ -1,5 +1,5 @@
-package com.quickverse.androidsdk.managers
-import com.quickverse.networking.APIClient
+package com.quickverse.androidsdk.internal.managers
+import com.quickverse.androidsdk.internal.networking.APIClient
 
 data class UtilisedKey(val key: String, val usage_count: Int)
 data class MissingKey(val key: String, val default_value: String)

@@ -1,6 +1,7 @@
-package com.quickverse.androidsdk.managers
-import com.quickverse.androidsdk.models.QuickVerseLocalization
-import com.quickverse.networking.APIClient
+package com.quickverse.androidsdk.internal.managers
+import com.quickverse.androidsdk.QuickVerse
+import com.quickverse.androidsdk.internal.models.QuickVerseLocalization
+import com.quickverse.androidsdk.internal.networking.APIClient
 
 class LocalizationManager(private val apiClient: APIClient) {
 

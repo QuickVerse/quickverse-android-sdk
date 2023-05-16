@@ -1,4 +1,4 @@
-package com.quickverse.androidsdk.managers
+package com.quickverse.androidsdk.internal.managers
 
 object LoggingManager {
     fun log(string: String) {

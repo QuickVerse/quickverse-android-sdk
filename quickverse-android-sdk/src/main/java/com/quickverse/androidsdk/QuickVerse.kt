@@ -1,6 +1,9 @@
-package com.quickverse.androidsdk.managers
+package com.quickverse.androidsdk
 
-import com.quickverse.networking.APIClient
+import com.quickverse.androidsdk.internal.managers.LocalizationManager
+import com.quickverse.androidsdk.internal.managers.LoggingManager
+import com.quickverse.androidsdk.internal.managers.ReportingManager
+import com.quickverse.androidsdk.internal.networking.APIClient
 import java.util.*
 
 /**

@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.quickverse.androidsdk.manager.QuickVerse
+import com.quickverse.androidsdk.managers.QuickVerse
 import com.quickverse.androidexample.databinding.FragmentFirstBinding
 import java.util.*
 

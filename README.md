@@ -57,12 +57,12 @@ _Note_: Keep an eye on the console. If you enable `isDebugEnabled`, the QuickVer
 ### 4. Access your localized strings
 
 ```kotlin
-text = QuickVerse.stringFor("Onboarding.Demo.Body")
+text = QuickVerse.stringFor("Onboarding.Demo.Title")
 ```
 
 Optionally provide a default value, should the key not exist in the local store.
 ```kotlin
-text = QuickVerse.stringFor("Onboarding.Demo.Body", "Welcome to QuickVerse")
+text = QuickVerse.stringFor("Onboarding.Demo.Title", "Welcome to QuickVerse")
 ```
 
 **_Recommended_**: Although you _can_ access the keys "inline", as showed above, we strongly recommend you store your keys in a single file for easy maintenance, e.g:

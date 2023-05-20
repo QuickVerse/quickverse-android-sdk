@@ -21,7 +21,7 @@ Add the following dependency to your _module-level_ `build.gradle` file:
 
 ```
 dependencies {
-    implementation 'io.quickverse.androidsdk:quickverse:1.5.4'
+    implementation 'io.quickverse.androidsdk:quickverse:1.5.5'
 }
 ```
 
@@ -39,7 +39,7 @@ import com.quickverse.androidsdk.QuickVerse
 
 You'll need your APIKey, retrievable from your QuickVerse account [here](https://quickverse.io/project/default/applications).
 ```kotlin
-QuickVerse.configure(quickVerseAPIKey = "{your-api-key}", appPackageName = "{your-package-name}")
+QuickVerse.configure(apiKey = "{your-api-key}", appPackageName = "{your-package-name}")
 QuickVerse.isDebugEnabled = true // Optionally get detailed console logs
 ```
 

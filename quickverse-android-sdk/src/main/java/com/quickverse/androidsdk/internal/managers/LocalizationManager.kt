@@ -6,6 +6,7 @@ import com.quickverse.androidsdk.internal.networking.APIClient
 class LocalizationManager(private val apiClient: APIClient) {
 
     var localizations = emptyList<QuickVerseLocalization>()
+    var successfulFetch = false
 
     fun getLocalizationsFor(languageCode: String, completion: (Boolean) -> Unit) {
         if (QuickVerse.isDebugEnabled) {
@@ -15,19 +16,14 @@ class LocalizationManager(private val apiClient: APIClient) {
             localizations?.let { unwrappedLocalizations ->
                 this.localizations = unwrappedLocalizations
             }
+            if (success) {
+                successfulFetch = true
+            }
             completion(success)
         }
     }
 
     fun valueFor(key: String): String? {
-        localizations.firstOrNull { it.key == key }?.target_text?.let { unwrappedLocalization ->
-            return unwrappedLocalization
-        }
-        if (localizations.isEmpty()) {
-            LoggingManager.log("🚨 WARN: No localizations have been received. Have you added at least one localization to your quickverse account? If yes, did your fetchLocalizations( request succeed?")
-        } else {
-            LoggingManager.log("🚨 WARN: Value not found for referenced key: $key. Please check this key exists in your quickverse.io account.")
-        }
-        return null
+        return localizations.firstOrNull { it.key == key }?.target_text
     }
 }

@@ -24,8 +24,8 @@ object QuickVerse {
      * Must be called before you can use the SDK.
      * We strongly recommend you call this on app initialisation.
      */
-    fun configure(quickVerseAPIKey: String, appPackageName: String) {
-        val apiClient = APIClient(apiKey = quickVerseAPIKey, packageName = appPackageName)
+    fun configure(apiKey: String, appPackageName: String) {
+        val apiClient = APIClient(apiKey = apiKey, packageName = appPackageName)
         reportingManager = ReportingManager(apiClient = apiClient)
         localizationManager = LocalizationManager(apiClient = apiClient)
     }
@@ -50,15 +50,13 @@ object QuickVerse {
      */
     // Option 1: Returns the value for a specific key, or null if one does not exist
     fun stringFor(key: String): String? {
-        val value = localizationManager.valueFor(key)
-        logRequestedKey(key = key, defaultValue = null, wasPresent = value != null)
-        return value
+        logRequestedKey(key = key, defaultValue = null)
+        return localizationManager.valueFor(key)
     }
     // Option 2: Returns the value for a specific key, falling back to a default value
     fun stringFor(key: String, defaultValue: String): String {
-        val value = localizationManager.valueFor(key)
-        logRequestedKey(key = key, defaultValue = defaultValue, wasPresent = value != null)
-        return value ?: defaultValue
+        logRequestedKey(key = key, defaultValue = defaultValue)
+        return localizationManager.valueFor(key) ?: defaultValue
     }
 
     /**
@@ -84,8 +82,9 @@ object QuickVerse {
         }
     }
 
-    private fun logRequestedKey(key: String, defaultValue: String?, wasPresent: Boolean) {
-        if (wasPresent) {
+    private fun logRequestedKey(key: String, defaultValue: String?) {
+        val isPresent = localizationManager.localizations.map { it.key }.contains(key)
+        if (isPresent) {
             reportingManager.logUtilisedKey(key)
         } else {
             if (localizationManager.localizations.isEmpty()) {
@@ -93,7 +92,9 @@ object QuickVerse {
             } else {
                 LoggingManager.log("🚨 WARN: Value not found for referenced key: $key. Please check this key exists in your quickverse.io account.")
             }
-            reportingManager.logMissingKey(key, defaultValue = defaultValue)
+            if (localizationManager.successfulFetch) {
+                reportingManager.logMissingKey(key, defaultValue = defaultValue)
+            }
         }
     }
 }

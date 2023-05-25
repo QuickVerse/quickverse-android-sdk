@@ -14,6 +14,9 @@ import java.util.*
  * 5. This object will hold the localized values for the duration of the session, and can be retrieved from anywhere in your app.
  */
 
+/// Compact global accessor, allowing you to call QuickVerse methods with shorter footprint, for example: QV.getLocalizations(
+typealias QV = QuickVerse
+
 object QuickVerse {
     private lateinit var reportingManager: ReportingManager
     private lateinit var localizationManager: LocalizationManager
@@ -49,14 +52,14 @@ object QuickVerse {
      * You can call these from anywhere in your app, e.g. Quickverse.stringFor(key: "Onboarding.Welcome.Title")
      */
     // Option 1: Returns the value for a specific key, or null if one does not exist
-    fun stringFor(key: String): String? {
+    fun stringFor(key: String, substitutions: List<QVSubstitution>? = null): String? {
         logRequestedKey(key = key, defaultValue = null)
-        return localizationManager.valueFor(key)
+        return localizationManager.valueFor(key, substitutions)
     }
     // Option 2: Returns the value for a specific key, falling back to a default value
-    fun stringFor(key: String, defaultValue: String): String {
+    fun stringFor(key: String, defaultValue: String, substitutions: List<QVSubstitution>? = null): String {
         logRequestedKey(key = key, defaultValue = defaultValue)
-        return localizationManager.valueFor(key) ?: defaultValue
+        return localizationManager.valueFor(key, substitutions) ?: defaultValue
     }
 
     /**

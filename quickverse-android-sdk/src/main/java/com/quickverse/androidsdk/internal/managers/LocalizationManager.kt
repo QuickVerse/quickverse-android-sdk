@@ -1,4 +1,5 @@
 package com.quickverse.androidsdk.internal.managers
+import com.quickverse.androidsdk.QVSubstitution
 import com.quickverse.androidsdk.QuickVerse
 import com.quickverse.androidsdk.internal.models.QuickVerseLocalization
 import com.quickverse.androidsdk.internal.networking.APIClient
@@ -23,7 +24,13 @@ class LocalizationManager(private val apiClient: APIClient) {
         }
     }
 
-    fun valueFor(key: String): String? {
-        return localizations.firstOrNull { it.key == key }?.target_text
+    fun valueFor(key: String, substitutions: List<QVSubstitution>? = null): String? {
+        var target = localizations.firstOrNull { it.key == key }?.target_text
+        substitutions?.let { subs ->
+            subs.forEach { it
+                target = target?.replace(it.replace, it.with)
+            }
+        }
+        return target
     }
 }

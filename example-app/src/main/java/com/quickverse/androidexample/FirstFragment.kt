@@ -8,11 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.quickverse.androidsdk.QuickVerse
+import com.quickverse.androidsdk.QV
 import com.quickverse.androidexample.databinding.FragmentFirstBinding
+import com.quickverse.androidsdk.QVSubstitution
 import java.util.*
 
 object QVKey {
     const val onboardingDemoTitle = "Onboarding.Demo.Title"
+    const val onboardingDemoTitleWithUser = "Onboarding.Demo.TitleWithUser"
     const val onboardingDemoBody = "Onboarding.Demo.Body"
 }
 
@@ -63,12 +66,24 @@ class FirstFragment : Fragment() {
             if (success) {
                 binding.resultSourceTextview.text = "Using: System Language (${Locale.getDefault().language})"
 
-                // Strongly Recommended - Use a centrally-declared keys file
+                // Access values using the keys you declared in your quickverse.io account
+                binding.onboardingTitleTextview.text = QuickVerse.stringFor(key = "Onboarding.Demo.Title")
+
+                // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
                 binding.onboardingTitleTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoTitle)
-                // Alternatively, keys can be hardcoded "inline"
-                binding.onboardingBodyTextview.text = QuickVerse.stringFor("Onboarding.Demo.Body")
+
+                // Optionally use our compact accessor "QV"
+                binding.onboardingTitleTextview.text = QV.stringFor(QVKey.onboardingDemoTitle)
 
                 // Optionally provide a default value
+                binding.onboardingTitleTextview.text = QV.stringFor(key = QVKey.onboardingDemoBody, defaultValue = "Welcome to QuickVerse")
+
+                // Optionally provide a substitution
+                binding.onboardingTitleTextview.text = QV.stringFor(
+                    key = QVKey.onboardingDemoTitleWithUser,
+                    substitutions = listOf(QVSubstitution(replace = "%@", with = "Alice"))
+                )
+
                 binding.onboardingBodyTextview.text = QuickVerse.stringFor(key = QVKey.onboardingDemoBody, defaultValue = "Welcome to QuickVerse")
             } else {
                 // Handle error
@@ -89,7 +104,11 @@ class FirstFragment : Fragment() {
             if (success) {
                 binding.resultSourceTextview.text = "Using: Demo Language ($demoLanguageCode)"
 
-                binding.onboardingTitleTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoTitle)
+                binding.onboardingTitleTextview.text = QV.stringFor(
+                    key = QVKey.onboardingDemoTitleWithUser,
+                    substitutions = listOf(QVSubstitution(replace = "%@", with = "Alice"))
+                )
+
                 binding.onboardingBodyTextview.text = QuickVerse.stringFor(QVKey.onboardingDemoBody)
             } else {
                 // Handle error

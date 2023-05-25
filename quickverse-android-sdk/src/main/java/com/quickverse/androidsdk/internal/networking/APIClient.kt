@@ -21,7 +21,7 @@ interface QuickVerseAPI {
         "Content-Type: application/json",
         "Platform: Android",
         "X-QUICKVERSE-DEVICEID: ${Settings.Secure.ANDROID_ID}",
-        "X_QUICKVERSE_VERSION: 1.5.5"
+        "X_QUICKVERSE_VERSION: 1.5.6"
     )
 
     @GET("localisation/{languageCode}")

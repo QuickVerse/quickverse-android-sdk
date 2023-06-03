@@ -3,7 +3,6 @@ package com.quickverse.androidsdk.internal.networking
 import android.provider.Settings
 import com.quickverse.androidsdk.internal.managers.LoggingManager
 import com.quickverse.androidsdk.internal.managers.MissingKey
-import com.quickverse.androidsdk.QuickVerse
 import com.quickverse.androidsdk.internal.managers.ReportBody
 import com.quickverse.androidsdk.internal.managers.UtilisedKey
 import com.quickverse.androidsdk.internal.models.QuickVerseLocalization
@@ -21,13 +20,13 @@ interface QuickVerseAPI {
         "Content-Type: application/json",
         "Platform: Android",
         "X-QUICKVERSE-DEVICEID: ${Settings.Secure.ANDROID_ID}",
-        "X_QUICKVERSE_VERSION: 1.5.6"
+        "X_QUICKVERSE_VERSION: 1.5.7"
     )
 
-    @GET("localisation/{languageCode}")
+    @GET("localisation/{languageCodesJoined}")
     fun getLocalizations(
         @Header("Authorization") tokenString: String,
-        @Path("languageCode") languageCode: String
+        @Path("languageCodesJoined") languageCodesJoined: String
     ): Call<QuickVerseResponse>
 
     @POST("report")
@@ -50,13 +49,10 @@ class APIClient(private val apiKey: String, private val packageName: String) {
         service = retrofit.create(QuickVerseAPI::class.java)
     }
 
-    fun getLocalizationsFor(languageCode: String, completion: (List<QuickVerseLocalization>?, Boolean) -> Unit) {
+    fun getLocalizationsFor(languageCodesJoined: String, completion: (List<QuickVerseLocalization>?, Boolean) -> Unit) {
         checkAuthCreds()
 
-        if (QuickVerse.isDebugEnabled) {
-            LoggingManager.log("ℹ️ Retrieving localizations for language code: $languageCode")
-        }
-        service.getLocalizations(tokenString = getToken64(), languageCode = languageCode)
+        service.getLocalizations(tokenString = getToken64(), languageCodesJoined = languageCodesJoined)
             .enqueue(object :
                 Callback<QuickVerseResponse> {
                 override fun onResponse(

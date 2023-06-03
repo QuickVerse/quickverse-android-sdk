@@ -1,6 +1,6 @@
 package com.quickverse.androidsdk.internal.managers
+import android.content.res.Resources
 import com.quickverse.androidsdk.QVSubstitution
-import com.quickverse.androidsdk.QuickVerse
 import com.quickverse.androidsdk.internal.models.QuickVerseLocalization
 import com.quickverse.androidsdk.internal.networking.APIClient
 
@@ -10,10 +10,10 @@ class LocalizationManager(private val apiClient: APIClient) {
     var successfulFetch = false
 
     fun getLocalizationsFor(languageCode: String, completion: (Boolean) -> Unit) {
-        if (QuickVerse.isDebugEnabled) {
-            LoggingManager.log("ℹ️ Retrieving localizations for language code: $languageCode")
-        }
-        apiClient.getLocalizationsFor(languageCode) { localizations, success ->
+        var languageCodes = Resources.getSystem().configuration.locales.toLanguageTags()
+        languageCodes = "$languageCode,".plus(languageCodes)
+
+        apiClient.getLocalizationsFor(languageCodesJoined = languageCodes) { localizations, success ->
             localizations?.let { unwrappedLocalizations ->
                 this.localizations = unwrappedLocalizations
             }
